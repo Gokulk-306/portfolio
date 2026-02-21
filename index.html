@@ -297,8 +297,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 18%;
-      transform: scale(1.04);
+      object-position: center 14%;
+      transform: scale(1);
     }
 
     .profile-controls {
@@ -683,13 +683,16 @@
             <div class="profile-slider" id="profileSlider">
               <div class="profile-track" id="profileTrack">
                 <div class="profile-slide">
-                  <img src="./hero-slide-1.jpg" alt="Gokul profile photo 1" onerror="this.onerror=null;this.src='https://github.com/Gokulk-306.png';" />
+                  <img src="./profile-hq.jpg" alt="Gokul profile photo 1" onerror="this.onerror=null;this.src='https://github.com/Gokulk-306.png';" />
                 </div>
                 <div class="profile-slide">
-                  <img src="./hero-slide-2.jpg" alt="Gokul profile photo 2" onerror="this.onerror=null;this.src='https://github.com/Gokulk-306.png';" />
+                  <img src="./hero-slide-1.jpg" alt="Gokul profile photo 2" onerror="this.onerror=null;this.src='https://github.com/Gokulk-306.png';" />
                 </div>
                 <div class="profile-slide">
-                  <img src="./hero-slide-3.jpg" alt="Gokul profile photo 3" onerror="this.onerror=null;this.src='https://github.com/Gokulk-306.png';" />
+                  <img src="./hero-slide-2.jpg" alt="Gokul profile photo 3" onerror="this.onerror=null;this.src='https://github.com/Gokulk-306.png';" />
+                </div>
+                <div class="profile-slide">
+                  <img src="./hero-slide-3.jpg" alt="Gokul profile photo 4" onerror="this.onerror=null;this.src='https://github.com/Gokulk-306.png';" />
                 </div>
               </div>
               <div class="profile-controls">
@@ -701,6 +704,7 @@
                   <button class="dot-btn active" type="button" aria-label="Show photo 1"></button>
                   <button class="dot-btn" type="button" aria-label="Show photo 2"></button>
                   <button class="dot-btn" type="button" aria-label="Show photo 3"></button>
+                  <button class="dot-btn" type="button" aria-label="Show photo 4"></button>
                 </div>
               </div>
             </div>
@@ -951,7 +955,7 @@
     const dotButtons = Array.from(document.querySelectorAll("#profileDots .dot-btn"));
     const prevButton = document.getElementById("slidePrev");
     const nextButton = document.getElementById("slideNext");
-    const slideCount = 3;
+    const slideCount = document.querySelectorAll("#profileTrack .profile-slide").length;
     let currentSlide = 0;
     let slideTimer;
 
