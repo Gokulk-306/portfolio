@@ -1,0 +1,836 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gokul K | DevOps Engineer</title>
+  <meta name="description" content="Portfolio of Gokul K, DevOps Engineer focused on AWS, CI/CD, Kubernetes, and automation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --surface: #fffdf8;
+      --surface-2: #f7f2e8;
+      --ink: #121212;
+      --muted: #5a5a57;
+      --line: #ded8cc;
+      --accent: #0e8a63;
+      --accent-2: #ea5f2d;
+      --max: 1120px;
+      --radius: 18px;
+      --shadow: 0 12px 40px rgba(18, 18, 18, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Sora", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(14, 138, 99, 0.14), transparent 50%),
+        radial-gradient(900px 500px at 100% 0%, rgba(234, 95, 45, 0.14), transparent 45%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max), 92%);
+      margin: 0 auto;
+    }
+
+    .tag {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.82rem;
+      padding: 0.75rem 1.2rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--ink);
+      color: var(--surface);
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn.ghost {
+      border-color: var(--line);
+      background: var(--surface);
+      color: var(--ink);
+    }
+
+    .btn.ghost:hover {
+      border-color: var(--ink);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(244, 241, 234, 0.84);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(222, 216, 204, 0.75);
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 0.93rem;
+    }
+
+    .menu a {
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .menu a:hover {
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 1.2rem;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      margin-top: 0.9rem;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      margin-top: 1.2rem;
+      max-width: 60ch;
+      color: var(--muted);
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .meta {
+      margin-top: 1.8rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .meta-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 0.9rem;
+      background: var(--surface-2);
+    }
+
+    .meta-card strong {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 1.12rem;
+      display: block;
+      color: var(--ink);
+    }
+
+    .meta-card span {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .hero-panel {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -90px;
+      top: -90px;
+      border-radius: 50%;
+      background: rgba(14, 138, 99, 0.14);
+      z-index: 0;
+    }
+
+    .hero-panel * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--ink);
+      background: #e2f7ef;
+      border: 1px solid #b8e4d3;
+      border-radius: 999px;
+      padding: 0.38rem 0.7rem;
+      width: fit-content;
+    }
+
+    .status::before {
+      content: "";
+      width: 0.48rem;
+      height: 0.48rem;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(14, 138, 99, 0.17);
+    }
+
+    .profile-wrap {
+      width: 100%;
+      max-width: 300px;
+      margin-inline: auto;
+      aspect-ratio: 4 / 5;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: linear-gradient(160deg, #ece7dd, #faf5ec);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+    }
+
+    .profile-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      transform: scale(0.93);
+    }
+
+    .stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .chip {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.74rem;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      padding: 0.32rem 0.58rem;
+      border-radius: 999px;
+    }
+
+    section {
+      padding: 2.2rem 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+      letter-spacing: -0.02em;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.6rem;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .timeline {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline li {
+      border-left: 2px solid var(--line);
+      padding-left: 0.9rem;
+    }
+
+    .timeline strong {
+      display: block;
+      color: var(--ink);
+    }
+
+    .timeline small {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      color: var(--accent-2);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .project {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: transform 0.2s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-3px);
+    }
+
+    .project h3 {
+      font-size: 1.08rem;
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .project .impact {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.78rem;
+      color: var(--accent);
+      background: #e8f6f1;
+      border: 1px solid #c8e9de;
+      border-radius: 10px;
+      padding: 0.52rem 0.7rem;
+      width: fit-content;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .skills-grid h3 {
+      margin-bottom: 0.7rem;
+      font-size: 1rem;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .logo-badge {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+    }
+
+    .logo-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .skills-grid ul {
+      list-style: none;
+      display: grid;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .contact-list a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.72rem 0.86rem;
+      background: #fff;
+      font-size: 0.9rem;
+      transition: 0.2s ease;
+    }
+
+    .contact-list a:hover {
+      border-color: var(--ink);
+      transform: translateX(2px);
+    }
+
+    form {
+      display: grid;
+      gap: 0.72rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      font: inherit;
+      padding: 0.74rem 0.85rem;
+      color: var(--ink);
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: 2px solid rgba(14, 138, 99, 0.25);
+      border-color: rgba(14, 138, 99, 0.6);
+    }
+
+    footer {
+      margin: 2.2rem 0 2.6rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about,
+      .contact,
+      .projects,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu {
+        display: none;
+      }
+
+      .meta {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">Gokul<span>K</span></a>
+      <nav class="menu" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn ghost" href="mailto:ceecgokul2024@gmail.com">Hire Me</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid reveal">
+        <article class="hero-copy">
+          <p class="tag">DevOps Engineer</p>
+          <h1>Shipping reliable cloud systems with speed and clarity.</h1>
+          <p>
+            I build deployment pipelines, cloud infrastructure, and observability systems that help teams release faster with less manual effort. My focus is AWS, Kubernetes, infrastructure automation, and practical reliability.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn ghost" href="https://github.com/Gokulk-306" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <div class="meta">
+            <div class="meta-card">
+              <strong>4+</strong>
+              <span>Production-grade projects</span>
+            </div>
+            <div class="meta-card">
+              <strong>95%</strong>
+              <span>Pipeline success rate</span>
+            </div>
+            <div class="meta-card">
+              <strong>85%</strong>
+              <span>Manual effort reduced</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="hero-panel">
+          <span class="status">Available for DevOps / Cloud roles</span>
+          <div class="profile-wrap">
+            <img src="https://github.com/Gokulk-306.png" alt="Gokul K profile photo" />
+          </div>
+          <div>
+            <p class="tag">Current focus</p>
+            <h2 style="font-size:1.3rem; margin-top:0.4rem;">Platform automation and secure delivery</h2>
+          </div>
+          <div class="stack-list" aria-label="Technology stack">
+            <span class="chip">AWS</span>
+            <span class="chip">Jenkins</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Kubernetes</span>
+            <span class="chip">Terraform</span>
+            <span class="chip">Ansible</span>
+            <span class="chip">Prometheus</span>
+            <span class="chip">Grafana</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="tag">Profile</p>
+            <h2>About Me</h2>
+          </div>
+        </div>
+        <div class="about">
+          <article class="card reveal">
+            <p>
+              I am a DevOps Engineer with a background in electronics and industrial automation. I currently work with AWS infrastructure, CI/CD pipelines, and deployment workflows that keep releases stable and repeatable.
+            </p>
+            <br />
+            <p>
+              At Onedate Software Solutions, I support production cloud environments and delivery pipelines. Before that, I worked in manufacturing automation, where I learned disciplined incident handling, system debugging, and process reliability.
+            </p>
+          </article>
+          <aside class="card reveal">
+            <p class="tag" style="margin-bottom:0.7rem;">Timeline</p>
+            <ul class="timeline">
+              <li>
+                <small>Dec 2025 - Present</small>
+                <strong>AWS DevOps Engineer Intern</strong>
+                Onedate Software Solutions, Coimbatore
+              </li>
+              <li>
+                <small>Aug 2024 - Jul 2025</small>
+                <strong>Automation Engineer</strong>
+                Salcomp Technologies, Chennai
+              </li>
+              <li>
+                <small>2020 - 2024</small>
+                <strong>B.E., ECE</strong>
+                K.S.R College of Engineering, Namakkal
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="tag">Portfolio</p>
+            <h2>Featured Projects</h2>
+          </div>
+        </div>
+        <div class="projects">
+          <article class="project reveal">
+            <h3>Jenkins End-to-End CI/CD Pipeline</h3>
+            <p>Multi-stage pipeline with quality gates, container builds, and Kubernetes deployment automation from commit to production.</p>
+            <span class="impact">95% success rate with zero manual deployments</span>
+          </article>
+          <article class="project reveal">
+            <h3>Jira Automation Webhook Service</h3>
+            <p>Flask microservice that listens to GitHub webhook events and creates structured Jira tickets using authenticated API workflows.</p>
+            <span class="impact">85% less manual issue tracking</span>
+          </article>
+          <article class="project reveal">
+            <h3>Ansible Infrastructure Automation</h3>
+            <p>Reusable playbooks and role structure for provisioning, hardening, and configuring AWS environments with consistent outcomes.</p>
+            <span class="impact">Repeatable deployments with auditability</span>
+          </article>
+          <article class="project reveal">
+            <h3>Kubernetes Monitoring Stack</h3>
+            <p>Prometheus and Grafana setup with custom dashboards and alert routing for early detection of service degradation.</p>
+            <span class="impact">Real-time visibility and faster incident response</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="tag">Work</p>
+            <h2>Experience Highlights</h2>
+          </div>
+        </div>
+        <article class="card reveal">
+          <ul class="timeline">
+            <li>
+              <strong>Provisioned and managed AWS workloads</strong>
+              Built and maintained EC2, IAM, network, and deployment setup for production use cases.
+            </li>
+            <li>
+              <strong>Reduced deployment friction with automation</strong>
+              Implemented Jenkins and Docker based delivery pipelines and removed repetitive manual steps.
+            </li>
+            <li>
+              <strong>Strengthened reliability mindset</strong>
+              Applied root-cause focused troubleshooting and documented runbooks across operations workflows.
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="tag">Toolkit</p>
+            <h2>Core Skills</h2>
+          </div>
+        </div>
+        <div class="skills-grid">
+          <article class="card reveal">
+            <h3>Cloud & Platform</h3>
+            <div class="logo-row" aria-label="Cloud logos">
+              <span class="logo-badge"><img src="https://cdn.simpleicons.org/amazonaws/FF9900" alt="AWS logo" /></span>
+              <span class="logo-badge"><img src="https://cdn.simpleicons.org/linux/FCC624" alt="Linux logo" /></span>
+              <span class="logo-badge"><img src="https://cdn.simpleicons.org/nginx/009639" alt="Nginx logo" /></span>
+            </div>
+            <ul>
+              <li>AWS (EC2, S3, IAM, VPC)</li>
+              <li>Auto Scaling and networking basics</li>
+              <li>Security-aware access configuration</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <h3>Delivery & Automation</h3>
+            <div class="logo-row" aria-label="Delivery logos">
+              <span class="logo-badge"><img src="https://cdn.simpleicons.org/jenkins/D24939" alt="Jenkins logo" /></span>
+              <span class="logo-badge"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker logo" /></span>
+              <span class="logo-badge"><img src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="Kubernetes logo" /></span>
+              <span class="logo-badge"><img src="https://cdn.simpleicons.org/git/F05032" alt="Git logo" /></span>
+            </div>
+            <ul>
+              <li>Jenkins CI/CD pipelines</li>
+              <li>Docker, Kubernetes, Helm</li>
+              <li>Git-based release workflows</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <h3>IaC & Observability</h3>
+            <div class="logo-row" aria-label="IaC and monitoring logos">
+              <span class="logo-badge"><img src="https://cdn.simpleicons.org/terraform/844FBA" alt="Terraform logo" /></span>
+              <span class="logo-badge"><img src="https://cdn.simpleicons.org/ansible/EE0000" alt="Ansible logo" /></span>
+              <span class="logo-badge"><img src="https://cdn.simpleicons.org/prometheus/E6522C" alt="Prometheus logo" /></span>
+              <span class="logo-badge"><img src="https://cdn.simpleicons.org/grafana/F46800" alt="Grafana logo" /></span>
+              <span class="logo-badge"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python logo" /></span>
+            </div>
+            <ul>
+              <li>Terraform and Ansible</li>
+              <li>Prometheus and Grafana</li>
+              <li>Python and Bash scripting</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="tag">Contact</p>
+            <h2>Lets Connect</h2>
+          </div>
+        </div>
+        <div class="contact">
+          <article class="card reveal">
+            <p>I am actively looking for entry-level DevOps and Cloud Engineer roles. Reach out through any channel below.</p>
+            <ul class="contact-list">
+              <li><a href="mailto:ceecgokul2024@gmail.com"><span>Email</span><span>ceecgokul2024@gmail.com</span></a></li>
+              <li><a href="tel:+919384116533"><span>Phone</span><span>+91 93841 16533</span></a></li>
+              <li><a href="https://github.com/Gokulk-306" target="_blank" rel="noopener"><span>GitHub</span><span>Gokulk-306</span></a></li>
+              <li><a href="https://linkedin.com/in/gokul-k30" target="_blank" rel="noopener"><span>LinkedIn</span><span>gokul-k30</span></a></li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <form id="contactForm">
+              <input id="name" type="text" placeholder="Your name" required />
+              <input id="email" type="email" placeholder="Your email" required />
+              <input id="role" type="text" placeholder="Role / company" />
+              <textarea id="message" placeholder="Tell me about the opportunity..." required></textarea>
+              <button class="btn primary" type="submit">Send Message</button>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">Gokul K | DevOps Engineer | Tamil Nadu, India</div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        }
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    document.getElementById("contactForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const role = document.getElementById("role").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!name || !email || !message) {
+        return;
+      }
+
+      const subject = encodeURIComponent(`Portfolio enquiry from ${name}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nRole/Company: ${role || "N/A"}\n\nMessage:\n${message}`
+      );
+
+      window.location.href = `mailto:ceecgokul2024@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
