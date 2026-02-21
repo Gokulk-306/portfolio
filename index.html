@@ -395,6 +395,28 @@
       width: fit-content;
     }
 
+    .project-links {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.25rem;
+    }
+
+    .project-link {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.74rem;
+      padding: 0.42rem 0.68rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      transition: 0.2s ease;
+    }
+
+    .project-link:hover {
+      border-color: var(--ink);
+      transform: translateY(-1px);
+    }
+
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -564,6 +586,7 @@
           <div class="cta-row">
             <a class="btn primary" href="#projects">View Projects</a>
             <a class="btn ghost" href="https://github.com/Gokulk-306" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn ghost" href="./Gokul-K-Resume.pdf" download="Gokul-K-Resume.pdf">Download Resume</a>
           </div>
           <div class="meta">
             <div class="meta-card">
@@ -659,21 +682,37 @@
             <h3>Jenkins End-to-End CI/CD Pipeline</h3>
             <p>Multi-stage pipeline with quality gates, container builds, and Kubernetes deployment automation from commit to production.</p>
             <span class="impact">95% success rate with zero manual deployments</span>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/Gokulk-306/nodejs-cicd-project" target="_blank" rel="noopener">Source Code</a>
+              <a class="project-link" href="https://github.com/Gokulk-306/Jenkins-Zero-To-Hero" target="_blank" rel="noopener">Demo/Guide</a>
+            </div>
           </article>
           <article class="project reveal">
             <h3>Jira Automation Webhook Service</h3>
             <p>Flask microservice that listens to GitHub webhook events and creates structured Jira tickets using authenticated API workflows.</p>
             <span class="impact">85% less manual issue tracking</span>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/Gokulk-306/PythonForDevops" target="_blank" rel="noopener">Source Code</a>
+              <a class="project-link" href="https://github.com/Gokulk-306/Python" target="_blank" rel="noopener">Demo/Guide</a>
+            </div>
           </article>
           <article class="project reveal">
             <h3>Ansible Infrastructure Automation</h3>
             <p>Reusable playbooks and role structure for provisioning, hardening, and configuring AWS environments with consistent outcomes.</p>
             <span class="impact">Repeatable deployments with auditability</span>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/Gokulk-306/My-Ansible-Role" target="_blank" rel="noopener">Source Code</a>
+              <a class="project-link" href="https://github.com/Gokulk-306/Ansible-task" target="_blank" rel="noopener">Demo/Guide</a>
+            </div>
           </article>
           <article class="project reveal">
             <h3>Kubernetes Monitoring Stack</h3>
             <p>Prometheus and Grafana setup with custom dashboards and alert routing for early detection of service degradation.</p>
             <span class="impact">Real-time visibility and faster incident response</span>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/Gokulk-306/Prometheus-Grafana-Task" target="_blank" rel="noopener">Source Code</a>
+              <a class="project-link" href="https://github.com/Gokulk-306/Kubernetes-practice-repo" target="_blank" rel="noopener">Demo/Guide</a>
+            </div>
           </article>
         </div>
       </div>
