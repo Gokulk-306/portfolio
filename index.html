@@ -272,12 +272,85 @@
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
     }
 
-    .profile-wrap img {
+    .profile-slider {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.45s ease;
+    }
+
+    .profile-slide {
+      width: 100%;
+      height: 100%;
+      flex: 0 0 100%;
+      position: relative;
+    }
+
+    .profile-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 20%;
+      object-position: center 18%;
       transform: scale(1.04);
+    }
+
+    .profile-controls {
+      position: absolute;
+      left: 0.6rem;
+      right: 0.6rem;
+      bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .profile-arrows {
+      display: flex;
+      gap: 0.35rem;
+      pointer-events: auto;
+    }
+
+    .slide-btn {
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      background: rgba(18, 18, 18, 0.45);
+      color: #fff;
+      border-radius: 999px;
+      width: 30px;
+      height: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .profile-dots {
+      display: flex;
+      gap: 0.35rem;
+      pointer-events: auto;
+    }
+
+    .dot-btn {
+      width: 8px;
+      height: 8px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.55);
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .dot-btn.active {
+      background: #ffffff;
     }
 
     .stack-list {
@@ -606,8 +679,31 @@
 
         <aside class="hero-panel">
           <span class="status">Available for DevOps / Cloud roles</span>
-            <div class="profile-wrap">
-            <img src="./profile-hq.jpg" alt="Gokul K profile photo" onerror="this.onerror=null;this.src='https://github.com/Gokulk-306.png';" />
+          <div class="profile-wrap">
+            <div class="profile-slider" id="profileSlider">
+              <div class="profile-track" id="profileTrack">
+                <div class="profile-slide">
+                  <img src="./hero-slide-1.jpg" alt="Gokul profile photo 1" onerror="this.onerror=null;this.src='https://github.com/Gokulk-306.png';" />
+                </div>
+                <div class="profile-slide">
+                  <img src="./hero-slide-2.jpg" alt="Gokul profile photo 2" onerror="this.onerror=null;this.src='https://github.com/Gokulk-306.png';" />
+                </div>
+                <div class="profile-slide">
+                  <img src="./hero-slide-3.jpg" alt="Gokul profile photo 3" onerror="this.onerror=null;this.src='https://github.com/Gokulk-306.png';" />
+                </div>
+              </div>
+              <div class="profile-controls">
+                <div class="profile-arrows">
+                  <button class="slide-btn" id="slidePrev" type="button" aria-label="Previous photo">&#8249;</button>
+                  <button class="slide-btn" id="slideNext" type="button" aria-label="Next photo">&#8250;</button>
+                </div>
+                <div class="profile-dots" id="profileDots">
+                  <button class="dot-btn active" type="button" aria-label="Show photo 1"></button>
+                  <button class="dot-btn" type="button" aria-label="Show photo 2"></button>
+                  <button class="dot-btn" type="button" aria-label="Show photo 3"></button>
+                </div>
+              </div>
+            </div>
           </div>
           <div>
             <p class="tag">Current focus</p>
@@ -850,6 +946,45 @@
     );
 
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    const profileTrack = document.getElementById("profileTrack");
+    const dotButtons = Array.from(document.querySelectorAll("#profileDots .dot-btn"));
+    const prevButton = document.getElementById("slidePrev");
+    const nextButton = document.getElementById("slideNext");
+    const slideCount = 3;
+    let currentSlide = 0;
+    let slideTimer;
+
+    function showSlide(index) {
+      currentSlide = (index + slideCount) % slideCount;
+      profileTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dotButtons.forEach((dot, i) => dot.classList.toggle("active", i === currentSlide));
+    }
+
+    function restartSlider() {
+      clearInterval(slideTimer);
+      slideTimer = setInterval(() => showSlide(currentSlide + 1), 3500);
+    }
+
+    prevButton.addEventListener("click", () => {
+      showSlide(currentSlide - 1);
+      restartSlider();
+    });
+
+    nextButton.addEventListener("click", () => {
+      showSlide(currentSlide + 1);
+      restartSlider();
+    });
+
+    dotButtons.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        showSlide(index);
+        restartSlider();
+      });
+    });
+
+    showSlide(0);
+    restartSlider();
 
     document.getElementById("contactForm").addEventListener("submit", (event) => {
       event.preventDefault();
