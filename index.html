@@ -8,6 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = savedTheme || (prefersDark ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
   <style>
     :root {
       --bg: #f4f1ea;
@@ -21,6 +29,34 @@
       --max: 1120px;
       --radius: 18px;
       --shadow: 0 12px 40px rgba(18, 18, 18, 0.08);
+      --bg-grad-1: rgba(14, 138, 99, 0.14);
+      --bg-grad-2: rgba(234, 95, 45, 0.14);
+      --header-bg: rgba(244, 241, 234, 0.84);
+      --header-border: rgba(222, 216, 204, 0.75);
+      --status-bg: #e2f7ef;
+      --status-border: #b8e4d3;
+      --status-ring: rgba(14, 138, 99, 0.17);
+      --input-bg: #ffffff;
+    }
+
+    html[data-theme="dark"] {
+      --bg: #101314;
+      --surface: #171c1d;
+      --surface-2: #1f2628;
+      --ink: #ecefee;
+      --muted: #a8b3b0;
+      --line: #2b3636;
+      --accent: #3ecf96;
+      --accent-2: #ff8a66;
+      --shadow: 0 14px 40px rgba(0, 0, 0, 0.3);
+      --bg-grad-1: rgba(62, 207, 150, 0.16);
+      --bg-grad-2: rgba(255, 138, 102, 0.13);
+      --header-bg: rgba(16, 19, 20, 0.78);
+      --header-border: rgba(43, 54, 54, 0.85);
+      --status-bg: rgba(62, 207, 150, 0.16);
+      --status-border: rgba(62, 207, 150, 0.35);
+      --status-ring: rgba(62, 207, 150, 0.2);
+      --input-bg: #151b1c;
     }
 
     * {
@@ -37,8 +73,8 @@
       font-family: "Sora", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(14, 138, 99, 0.14), transparent 50%),
-        radial-gradient(900px 500px at 100% 0%, rgba(234, 95, 45, 0.14), transparent 45%),
+        radial-gradient(1200px 600px at 10% -10%, var(--bg-grad-1), transparent 50%),
+        radial-gradient(900px 500px at 100% 0%, var(--bg-grad-2), transparent 45%),
         var(--bg);
       line-height: 1.6;
     }
@@ -104,9 +140,9 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(244, 241, 234, 0.84);
+      background: var(--header-bg);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(222, 216, 204, 0.75);
+      border-bottom: 1px solid var(--header-border);
     }
 
     .nav {
@@ -244,8 +280,8 @@
       text-transform: uppercase;
       letter-spacing: 0.07em;
       color: var(--ink);
-      background: #e2f7ef;
-      border: 1px solid #b8e4d3;
+      background: var(--status-bg);
+      border: 1px solid var(--status-border);
       border-radius: 999px;
       padding: 0.38rem 0.7rem;
       width: fit-content;
@@ -257,7 +293,7 @@
       height: 0.48rem;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(14, 138, 99, 0.17);
+      box-shadow: 0 0 0 6px var(--status-ring);
     }
 
     .profile-wrap {
@@ -363,7 +399,7 @@
       font-family: "IBM Plex Mono", monospace;
       font-size: 0.74rem;
       border: 1px solid var(--line);
-      background: #ffffff;
+      background: var(--surface);
       padding: 0.32rem 0.58rem;
       border-radius: 999px;
     }
@@ -481,7 +517,7 @@
       padding: 0.42rem 0.68rem;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: #fff;
+      background: var(--surface);
       transition: 0.2s ease;
     }
 
@@ -514,7 +550,7 @@
       height: 30px;
       border-radius: 8px;
       border: 1px solid var(--line);
-      background: #fff;
+      background: var(--surface);
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -554,7 +590,7 @@
       border: 1px solid var(--line);
       border-radius: 12px;
       padding: 0.72rem 0.86rem;
-      background: #fff;
+      background: var(--surface);
       font-size: 0.9rem;
       transition: 0.2s ease;
     }
@@ -574,7 +610,7 @@
       width: 100%;
       border: 1px solid var(--line);
       border-radius: 12px;
-      background: #fff;
+      background: var(--input-bg);
       font: inherit;
       padding: 0.74rem 0.85rem;
       color: var(--ink);
@@ -609,6 +645,12 @@
       transform: translateY(0);
     }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
     @media (max-width: 980px) {
       .hero-grid,
       .about,
@@ -629,6 +671,10 @@
       .hero {
         padding-top: 3.5rem;
       }
+
+      .nav-actions .btn {
+        padding: 0.62rem 0.9rem;
+      }
     }
   </style>
 </head>
@@ -643,7 +689,10 @@
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="btn ghost" href="mailto:ceecgokul2024@gmail.com">Hire Me</a>
+      <div class="nav-actions">
+        <button class="btn ghost" id="themeToggle" type="button" aria-label="Toggle theme">Dark</button>
+        <a class="btn ghost" href="mailto:ceecgokul2024@gmail.com">Hire Me</a>
+      </div>
     </div>
   </header>
 
@@ -950,6 +999,24 @@
     );
 
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    const root = document.documentElement;
+    const themeToggle = document.getElementById("themeToggle");
+
+    function updateThemeButton() {
+      const isDark = root.getAttribute("data-theme") === "dark";
+      themeToggle.textContent = isDark ? "Light" : "Dark";
+      themeToggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", nextTheme);
+      localStorage.setItem("theme", nextTheme);
+      updateThemeButton();
+    });
+
+    updateThemeButton();
 
     const profileTrack = document.getElementById("profileTrack");
     const dotButtons = Array.from(document.querySelectorAll("#profileDots .dot-btn"));
